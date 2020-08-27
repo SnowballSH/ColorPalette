@@ -1,5 +1,4 @@
-from color_palette import conv, errors
-
+from . import conversion, errors
 
 class Color:
     def __init__(self, value=(0, 0, 0)):
@@ -27,14 +26,14 @@ class Color:
     def switch(self, mode: str):
         if mode != self.mode:
             if mode == "rgb":
-                self.value = conv.hex_rgb(self.value)
+                self.value = conversion.hex_rgb(self.value)
                 self.red = self.value[0]
                 self.green = self.value[1]
                 self.blue = self.value[2]
                 self.mode = mode
 
             elif mode == "hex":
-                self.value = conv.rgb_hex(self.value)
+                self.value = conversion.rgb_hex(self.value)
                 self.red = self.value[0:2]
                 self.green = self.value[2:4]
                 self.blue = self.value[4:6]
