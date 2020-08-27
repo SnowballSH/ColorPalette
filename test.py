@@ -10,6 +10,7 @@ print(red)
 print(red.red)
 print(red.green)
 print(red.blue)
+red.to_rgb()
 try:
     red.switch("this is invalid")
 except Exception as e:

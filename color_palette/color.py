@@ -1,4 +1,6 @@
-from . import conversion, errors
+from . import conversion, errors, checks
+
+ALLOWED_MODES = ("rgb", "hex")
 
 class Color:
     def __init__(self, value=(0, 0, 0)):
@@ -7,7 +9,7 @@ class Color:
             errors.raiseColorValueError(value)
         self.value = value
 
-        if not self.mode in ("rgb","hex"):
+        if not self.mode in ALLOWED_MODES:
             errors.raiseColorModeError(self.mode)
 
     @property
@@ -31,18 +33,24 @@ class Color:
         elif self.mode == "hex":
             return self.value[4:6]
 
+    @checks.mode_check
     def switch(self, mode: str):
-        if mode != self.mode:
-            if mode == "rgb":
-                self.value = conversion.hex_rgb(self.value)
-                self.mode = mode
+        if mode == "rgb":
+            self.value = conversion.hex_rgb(self.value)
+            self.mode = mode
+        elif mode == "hex":
+            self.value = conversion.rgb_hex(self.value)
+            self.mode = mode
 
-            elif mode == "hex":
-                self.value = conversion.rgb_hex(self.value)
-                self.mode = mode
+    def to_rgb(self):
+        if self.mode != "rbg":
+            self.value = conversion.hex_rgb(self.value)
+            self.mode = "rgb"
 
-            else:
-                errors.raiseColorModeError(mode)
+    def to_hex(self):
+        if self.mode != "hex":
+            self.value = conversion.rgb_hex(self.value)
+            self.mode = "hex"
 
     def __repr__(self):
         return f"Color {self.value} with mode '{self.mode}'"
