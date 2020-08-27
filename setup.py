@@ -7,12 +7,12 @@ with open('requirements.txt') as f:
 with open("README.md", "r") as f:
     readme = f.read()
 
-setup(name="color_pallete",
-    author="SnowballSH, one-wq, 12944qwerty",
-    version="0.0",
-    description="A color palette module",
-    long_description=readme,
-    long_description_content_type="text/md",
-    install_requires=requirements,
-    python_requires=">=3.6"
-)
+setup(name="color_palette",
+      author="SnowballSH, one-wq, 12944qwerty",
+      version="0.0",
+      description="A color palette module",
+      long_description=readme,
+      long_description_content_type="text/md",
+      install_requires=requirements,
+      python_requires=">=3.6"
+      )
