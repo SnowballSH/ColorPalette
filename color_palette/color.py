@@ -47,16 +47,31 @@ class Color:
             self.mode = mode
 
     def to_rgb(self):
-        """Switches the color to rgb"""
+        """Returns a new instance of hex color"""
         if self.mode != "rbg":
-            self.value = conversion.hex_rgb(self.value)
-            self.mode = "rgb"
+            value = conversion.hex_rgb(self.value)
+            return rgb_color(red=value[0], green=value[1], blue=value[2])
+        return self
 
     def to_hex(self):
-        """Switches the color to hex"""
+        """Returns a new instance of hex color"""
         if self.mode != "hex":
-            self.value = conversion.rgb_hex(self.value)
-            self.mode = "hex"
+            value = conversion.rgb_hex(self.value)
+            return hex_color(code=value)
+        return self
 
     def __repr__(self):
         return f"Color {self.value} with mode '{self.mode}'"
+
+    def __eq__(self, other):
+        if other.mode == self.mode and self.value == other.value:
+            return True
+        return other.mode != self.mode and other.to_hex() == self.to_hex()
+
+
+def rgb_color(*, red, green, blue):
+    return Color((red, green, blue))
+
+
+def hex_color(*, code):
+    return Color(str(code))
