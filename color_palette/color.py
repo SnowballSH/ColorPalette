@@ -72,7 +72,7 @@ class Color:
         return self
 
     def __repr__(self):
-        return f"{str(self.__class__)[28:-2]} {self.value} with mode '{self.mode}'"
+        return f"{self.__class__.__name__} {self.value} with mode '{self.mode}'"
 
     def __eq__(self, other):
         if other.mode == self.mode and self.value == other.value:
