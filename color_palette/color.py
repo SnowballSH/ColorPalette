@@ -3,6 +3,7 @@ from . import conversion, errors, checks
 ALLOWED_MODES = ("rgb", "hex")
 
 class Color:
+    """Color class for all features."""
     def __init__(self, value=(0, 0, 0)):
         self.mode = "rgb" if type(value) in [list, tuple] else "hex" if type(value) == str else None
         if self.mode is None or (self.mode == 'rgb' and len(value) != 3) or (self.mode == 'hex' and len(value) != 6):
@@ -71,7 +72,7 @@ class Color:
         return self
 
     def __repr__(self):
-        return f"Color {self.value} with mode '{self.mode}'"
+        return f"{str(self.__class__)[28:-2]} {self.value} with mode '{self.mode}'"
 
     def __eq__(self, other):
         if other.mode == self.mode and self.value == other.value:
@@ -79,9 +80,27 @@ class Color:
         return other.mode != self.mode and other.hex == self.hex
 
 
+class Colour(Color):
+    """Alias to Color"""
+    def __init__(self, value=(0, 0, 0)):
+        super().__init__(value)
+
+
 def rgb_color(*, red, green, blue):
+    """Creates a Color instance of rgb"""
     return Color((red, green, blue))
 
 
 def hex_color(*, code):
+    """Creates a Color instance of hex"""
     return Color(str(code))
+
+
+def rgb_colour(*, red, green, blue):
+    """Creates a Colour instance of rgb"""
+    return Colour((red, green, blue))
+
+
+def hex_colour(*, code):
+    """Creates a Colour instance of hex"""
+    return Colour(str(code))
