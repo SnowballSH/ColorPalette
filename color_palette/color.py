@@ -36,6 +36,16 @@ class Color:
         elif self.mode == "hex":
             return self.value[4:6]
 
+    @property
+    def hex(self):
+        """Returns the hex value"""
+        return conversion.rgb_hex(self.value)
+
+    @property
+    def rgb(self):
+        """Returns the rgb value"""
+        return conversion.hex_rgb(self.value)
+
     @checks.mode_check
     def switch(self, mode: str):
         """Switches the color to the given mode"""
@@ -47,17 +57,17 @@ class Color:
             self.mode = mode
 
     def to_rgb(self):
-        """Returns a new instance of hex color"""
-        if self.mode != "rbg":
-            value = conversion.hex_rgb(self.value)
-            return rgb_color(red=value[0], green=value[1], blue=value[2])
+        """Changes color to rgb"""
+        if self.mode != "rgb":
+            self.value = conversion.hex_rgb(self.value)
+            self.mode = "rgb"
         return self
 
     def to_hex(self):
-        """Returns a new instance of hex color"""
+        """Changes color to hex"""
         if self.mode != "hex":
-            value = conversion.rgb_hex(self.value)
-            return hex_color(code=value)
+            self.value = conversion.rgb_hex(self.value)
+            self.mode = "hex"
         return self
 
     def __repr__(self):
@@ -66,7 +76,7 @@ class Color:
     def __eq__(self, other):
         if other.mode == self.mode and self.value == other.value:
             return True
-        return other.mode != self.mode and other.to_hex() == self.to_hex()
+        return other.mode != self.mode and other.hex == self.hex
 
 
 def rgb_color(*, red, green, blue):
