@@ -2,15 +2,17 @@ from . import conversion, errors, checks
 
 ALLOWED_MODES = ("rgb", "hex")
 
+
 class Color:
     """Color class for all features."""
+
     def __init__(self, value=(0, 0, 0)):
         self.mode = "rgb" if type(value) in [list, tuple] else "hex" if type(value) == str else None
         if self.mode is None or (self.mode == 'rgb' and len(value) != 3) or (self.mode == 'hex' and len(value) != 6):
             errors.raiseColorValueError(value)
         self.value = value
 
-        if not self.mode in ALLOWED_MODES:
+        if self.mode not in ALLOWED_MODES:
             errors.raiseColorModeError(self.mode)
 
     @property
@@ -82,6 +84,7 @@ class Color:
 
 class Colour(Color):
     """Alias to Color"""
+
     def __init__(self, value=(0, 0, 0)):
         super().__init__(value)
 
