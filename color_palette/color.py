@@ -2,6 +2,7 @@ from . import conversion, errors, color_checks
 
 ALLOWED_MODES = ("rgb", "hex", "hsl")
 
+
 class Color:
     """Color class for all features."""
     def __init__(self, mode=None, value=(0, 0, 0)):
@@ -17,7 +18,7 @@ class Color:
         if ('#' in self.value) and self.mode == 'hex':
             self.value = self.value.split('#')[1]
 
-        if not self.mode in ALLOWED_MODES:
+        if self.mode not in ALLOWED_MODES:
             errors.raiseColorModeError(self.mode)
 
     @property
@@ -98,6 +99,8 @@ class Color:
         elif mode == "hex":
             self.value = conversion.rgb_hex(self.value)
             self.mode = mode
+        else:
+            errors.raiseColorModeError(mode)
 
     def to_rgb(self):
         """Changes color to rgb"""
@@ -121,30 +124,19 @@ class Color:
             return True
         return other.mode != self.mode and other.hex == self.hex
 
-
-class Colour(Color):
-    """Alias to Color"""
-    def __init__(self, mode=None, value=(0, 0, 0)):
-        super().__init__(mode, value)
-
-
-def rgb_color(*, red, green, blue):
+def rgb_color(rgb):
     """Creates a Color instance of rgb"""
-    return Color((red, green, blue))
+    return Color(rgb)
 
 
-def hex_color(*, code):
+def hex_color(code):
     """Creates a Color instance of hex"""
     return Color(str(code))
 
 
-def rgb_colour(*, red, green, blue):
-    """Creates a Colour instance of rgb"""
-    return Colour((red, green, blue))
+# ALIAS
 
+Colour: classmethod = Color
 
-def hex_colour(*, code):
-    """Creates a Colour instance of hex"""
-    return Colour(str(code))
-
-test = Colour("hex", '#ffffff')
+rgb_colour = rgb_color
+hex_colour = hex_color

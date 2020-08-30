@@ -1,6 +1,6 @@
 from color_palette import color
 
-red = color.Color((255, 20, 30))
+red = color.Colour((23, 91, 72))
 print(red)
 print(red.red)
 print(red.green)
@@ -19,6 +19,3 @@ try:
     invalid = color.Color("This is not valid")
 except Exception as e:
     print(e)
-
-rgb = color.rgb_colour(red=10, green=102, blue=24)
-print(rgb)
