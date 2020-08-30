@@ -4,7 +4,7 @@ requirements = []
 with open('requirements.txt') as f:
     requirements = f.read().splitlines()
 
-with open("README.md", "r") as f:
+with open("docs/README.md", "r") as f:
     readme = f.read()
 
 setup(name="color_palette",

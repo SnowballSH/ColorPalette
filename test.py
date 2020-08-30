@@ -1,6 +1,6 @@
 from color_palette import color
 
-red = color.Colour((23, 12, 72))
+red = color.Colour((23, 12, 72), mode="rgb")
 print(red)
 print(red.red)
 print(red.green)
