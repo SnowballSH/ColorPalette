@@ -8,11 +8,13 @@ def mode_check(func):
         mode = args[0].mode
         if not mode != args[1]:
             return
-        if not mode in color.ALLOWED_MODES:
+        if mode not in color.ALLOWED_MODES:
             return errors.raiseColorModeError(args[1])
 
         return func(*args, **kwargs)
+
     return wrapper
+
 
 def value_check(func):
     @wraps(func)
@@ -23,4 +25,5 @@ def value_check(func):
             return errors.raiseColorValueError(args[1])
 
         return func(*args, **kwargs)
+
     return wrapper

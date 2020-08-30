@@ -5,16 +5,22 @@ ALLOWED_MODES = ("rgb", "hex", "hsl")
 
 class Color:
     """Color class for all features."""
-    def __init__(self, mode=None, value=(0, 0, 0)):
-        self.mode = mode
-        if self.mode == None:
-            if type(self.value) == tuple:
-                if type(self.value[1:]) == float: self.mode = 'hsl'
-                else: self.mode = 'rgb'
-            elif type(self.value) == str:
-                self.mode = "hex"
 
+    def __init__(self, value=(0, 0, 0), mode=None):
+        self.mode = mode
         self.value = value
+
+        if self.mode is None:
+            if type(self.value) == tuple and len(self.value) == 3:
+                if type(self.value[1:]) == float:
+                    self.mode = 'hsl'
+                else:
+                    self.mode = 'rgb'
+            elif type(self.value) == str and len(self.value) == 6:
+                self.mode = "hex"
+            else:
+                errors.raiseColorValueError(self.value)
+
         if ('#' in self.value) and self.mode == 'hex':
             self.value = self.value.split('#')[1]
 
@@ -28,7 +34,7 @@ class Color:
             return self.value[0]
         elif self.mode == "hex":
             return self.value[0:2]
-        
+
     @property
     def blue(self):
         """Returns the blue value of the color."""
@@ -44,7 +50,7 @@ class Color:
             return self.value[2]
         elif self.mode == "hex":
             return self.value[4:6]
-    
+
     @property
     def hue(self):
         if self.mode == "hsl":
@@ -86,9 +92,9 @@ class Color:
     def hsl(self):
         """Returns the hsl value"""
         if self.mode == "rgb":
-            conversion.rgb_hsl(self.value)
+            return conversion.rgb_hsl(self.value)
         else:
-            conversion.hex_hsl(self.value)
+            return conversion.hex_hsl(self.value)
 
     @color_checks.mode_check
     def switch(self, mode: str):
@@ -123,6 +129,7 @@ class Color:
         if other.mode == self.mode and self.value == other.value:
             return True
         return other.mode != self.mode and other.hex == self.hex
+
 
 def rgb_color(rgb):
     """Creates a Color instance of rgb"""
