@@ -15,10 +15,10 @@ def rgb_hex(value) -> str:
 
 def hex_rgb(value) -> tuple:
     """Converts from hex to rbg"""
-    return tuple(hex_int(c) for c in value)
+    return tuple(hex_int(c) for c in [value[:2], value[2:4], value[4:6]])
 
 
-def rgb_hsl(value: tuple) -> tuple:
+def rgb_hsl(value) -> tuple:
     """Converts from rgb to hsl"""
     r, g, b = value
     r, g, b = r / 255, g / 255, b / 255
@@ -46,17 +46,16 @@ def rgb_hsl(value: tuple) -> tuple:
     return hue, saturation, lightness
 
 
-def hex_hsl(value: str) -> tuple:
+def hex_hsl(value) -> tuple:
     """Converts from hex to hsl"""
-    r, g, b = hex_rgb(value)
-    return rgb_hsl((r, g, b))
+    return rgb_hsl(hex_rgb(value))
 
 
-def hsl_hex(value: tuple) -> str:
+def hsl_hex(value) -> str:
     """Converts from hsl to hex"""
     pass
 
 
-def hsl_rgb(value: tuple) -> tuple:
+def hsl_rgb(value) -> tuple:
     """Converts from hsl to rgb"""
     pass

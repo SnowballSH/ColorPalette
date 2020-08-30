@@ -16,6 +16,7 @@ class Color:
                     self.mode = 'hsl'
                 else:
                     self.mode = 'rgb'
+                errors.raiseModeWarning("rgb")
             elif type(self.value) == str and len(self.value) == 6:
                 self.mode = "hex"
             else:
@@ -34,6 +35,8 @@ class Color:
             return self.value[0]
         elif self.mode == "hex":
             return self.value[0:2]
+        else:
+            errors.raiseColorModeError()
 
     @property
     def blue(self):
@@ -42,6 +45,8 @@ class Color:
             return self.value[1]
         elif self.mode == "hex":
             return self.value[2:4]
+        else:
+            errors.raiseColorModeError()
 
     @property
     def green(self):
@@ -50,6 +55,8 @@ class Color:
             return self.value[2]
         elif self.mode == "hex":
             return self.value[4:6]
+        else:
+            errors.raiseColorModeError()
 
     @property
     def hue(self):
@@ -100,10 +107,22 @@ class Color:
     def switch(self, mode: str):
         """Switches the color to the given mode"""
         if mode == "rgb":
-            self.value = conversion.hex_rgb(self.value)
+            if self.mode == "hex":
+                self.value = conversion.hex_rgb(self.value)
+            elif self.mode == "hsl":
+                self.value = conversion.hsl_rgb(self.value)
             self.mode = mode
         elif mode == "hex":
-            self.value = conversion.rgb_hex(self.value)
+            if self.mode == "rgb":
+                self.value = conversion.rgb_hex(self.value)
+            elif self.mode == "hsl":
+                self.value = conversion.hsl_hex(self.value)
+            self.mode = mode
+        elif mode == "hsl":
+            if self.mode == "rgb":
+                self.value = conversion.rgb_hsl(self.value)
+            elif self.mode == "hex":
+                self.value = conversion.hex_hsl(self.value)
             self.mode = mode
         else:
             errors.raiseColorModeError(mode)
