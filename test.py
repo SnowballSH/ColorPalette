@@ -13,13 +13,6 @@ print(red.red)
 print(red.green)
 print(red.blue)
 
-red.switch("hsl")
-
-print(red)
-print(red.hue)
-print(red.saturation)
-print(red.lightness)
-
 try:
     red.switch("this is invalid")
 except Exception as e:
