@@ -1,15 +1,26 @@
 from setuptools import setup
+import re
+
+version = ''
+with open('color_palette/__init__.py') as f:
+    version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read(), re.MULTILINE).group(1)
+
+print(version)
 
 requirements = []
-with open('requirements.txt') as f:
-    requirements = f.read().splitlines()
+try:
+    with open('requirements.txt') as f:
+        requirements = f.read().splitlines()
+except FileNotFoundError:
+    pass
+
 
 with open("docs/README.md", "r") as f:
     readme = f.read()
 
 setup(name="color_palette",
       author="SnowballSH, one-wq, 12944qwerty",
-      version="0.0",
+      version=version,
       description="A color palette module",
       long_description=readme,
       long_description_content_type="text/md",
