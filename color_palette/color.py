@@ -84,16 +84,12 @@ class Color:
         """Returns the hex value"""
         if self.mode == "rgb":
             return conversion.rgb_hex(self.value)
-        else:
-            pass
 
     @property
     def rgb(self):
         """Returns the rgb value"""
         if self.mode == "hex":
             return conversion.hex_rgb(self.value)
-        else:
-            pass
 
     @property
     def hsl(self):
