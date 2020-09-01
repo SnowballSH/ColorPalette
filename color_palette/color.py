@@ -1,4 +1,4 @@
-from . import conversion, errors, color_checks
+from . import conversion, errors, color_checks, mix
 
 ALLOWED_MODES = ("rgb", "hex")
 
@@ -84,6 +84,13 @@ class Color:
             self.value = conversion.rgb_hex(self.value)
             self.mode = "hex"
         return self
+
+    def __getitem__(self, item):
+        amount = item
+        if type(amount) not in (int, float):
+            raise ValueError(f"'amount' parameter must be a number, got {type(amount)}")
+
+        return mix.brightness(self, amount=amount)
 
     def __repr__(self):
         return str(self.value)

@@ -19,10 +19,14 @@ Install with git bash command:
 Usage
 ------------
 
->>> from color_palette import Color
->>> my_rgb = Color((255, 0, 0)) # You can either call on rbg
->>> print(rgb.blue, rbg.red, rgb.green) # You can print the different values with both hex and rgb
->>> my_hex = rgb.switch("hex") # You can switch from rgb to hex using this or the .to_rbg and .to_hex commands
+>>> from color_palette import Color, mix, presets
+>>> my_rgb = Color((255, 0, 0))  # You can either call on rbg
+>>> print(my_rgb)  # You can print the different values with both hex and rgb
+>>> my_hex = rgb.switch("hex")  # You can switch from rgb to hex using this or the .to_rbg and .to_hex commands
+>>> cyan = presets.cyan  # get preset colors to code quicker
+>>> mixed = mix.mix([my_rgb, cyan])  # You can even mix them together!
+>>> yellow = presets.yellow[1.6]  # You can get shades and tints for colors by using [amount] after color -- 0 is the original color
+>>> print(yellow)  # In this case, 'yellow' is a light yellow color with 1.6 times lighter than normal.
 
 Contribute
 ------------

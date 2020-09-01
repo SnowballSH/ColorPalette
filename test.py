@@ -1,10 +1,9 @@
-from color_palette import color, mix
+from color_palette import mix, presets
 
-red = color.Colour((255, 0, 0))
-green = color.Colour((0, 255, 0))
-blue = color.Colour((0, 0, 255))
+red = presets.red[0.5]
+green = presets.green[-0.4]
+blue = presets.blue[0.8]
 
 new = mix.mix([red, green, blue])
 
 print(new)
-
