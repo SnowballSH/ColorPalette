@@ -1,6 +1,5 @@
 from . import color
-
-Color = color.Color
+from .color import Color
 
 # Basic colors
 
