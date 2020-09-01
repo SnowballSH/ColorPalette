@@ -1,23 +1,10 @@
-from color_palette import color
+from color_palette import color, mix
 
-red = color.Colour((23, 12, 72), mode="rgb")
-print(red)
-print(red.red)
-print(red.green)
-print(red.blue)
+red = color.Colour((255, 0, 0))
+green = color.Colour((0, 255, 0))
+blue = color.Colour((0, 0, 255))
 
-red.switch("hex")
+new = mix.mix([red, green, blue])
 
-print(red)
-print(red.red)
-print(red.green)
-print(red.blue)
+print(new)
 
-try:
-    red.switch("this is invalid")
-except Exception as e:
-    print(e)
-try:
-    invalid = color.Color("This is not valid")
-except Exception as e:
-    print(e)

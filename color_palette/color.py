@@ -24,7 +24,6 @@ class Color:
         if self.mode not in ALLOWED_MODES:
             errors.raiseColorModeError(self.mode)
 
-    @property
     def red(self):
         """Returns the red value of the color."""
         if self.mode == "rgb":
@@ -34,9 +33,8 @@ class Color:
         else:
             errors.raiseColorModeError()
 
-    @property
-    def blue(self):
-        """Returns the blue value of the color."""
+    def green(self):
+        """Returns the green value of the color."""
         if self.mode == "rgb":
             return self.value[1]
         elif self.mode == "hex":
@@ -44,9 +42,8 @@ class Color:
         else:
             errors.raiseColorModeError()
 
-    @property
-    def green(self):
-        """Returns the green value of the color."""
+    def blue(self):
+        """Returns the blue value of the color."""
         if self.mode == "rgb":
             return self.value[2]
         elif self.mode == "hex":
@@ -54,12 +51,10 @@ class Color:
         else:
             errors.raiseColorModeError()
 
-    @property
     def hex(self):
         """Returns the hex value"""
         return conversion.rgb_hex(self.value)
 
-    @property
     def rgb(self):
         """Returns the rgb value"""
         return conversion.hex_rgb(self.value)
@@ -91,7 +86,7 @@ class Color:
         return self
 
     def __repr__(self):
-        return self.value
+        return str(self.value)
 
     def __eq__(self, other):
         if other.mode == self.mode and self.value == other.value:
