@@ -1,4 +1,5 @@
-from .color import Color
+from .color import Color, Colour
+from . import color, presets
 
 __title__ = 'colorpalette'
 __author__ = 'SnowballSH, 12944qwerty, one-wq'

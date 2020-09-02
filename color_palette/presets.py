@@ -1,4 +1,3 @@
-from . import color
 from .color import Color
 
 # Basic colors
