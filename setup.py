@@ -18,6 +18,7 @@ with open("docs/README.md", "r") as f:
     readme = f.read()
 
 setup(name="color_palette",
+      packages=["color_palette"],
       author="SnowballSH, one-wq, 12944qwerty",
       version=version,
       description="A color palette module",
