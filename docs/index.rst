@@ -10,11 +10,13 @@ Requirements
 
 Installation
 ------------
-It hasn't come out on pypi yet. To install, just install through git
-
 Install with git bash command:
 
 ``python -m pip install git+https://github.com/SnowballSH/color_palette.git@master``
+
+pip:
+
+``pip install color-palette==0.2``
 
 Usage
 ------------
