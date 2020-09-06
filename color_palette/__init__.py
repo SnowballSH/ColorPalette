@@ -1,7 +1,9 @@
 from .color import Color, Colour
-from . import color, presets
+from .conversion import convert
+from .mix import mix, brightness
+from . import presets
 
-__title__ = 'colorpalette'
+__title__ = 'color_palette'
 __author__ = 'SnowballSH, 12944qwerty, one-wq'
 __license__ = 'MIT'
 __version__ = '0.2'
