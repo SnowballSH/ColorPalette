@@ -4,6 +4,6 @@ red = presets.red[0.5]
 green = presets.green[-0.4]
 blue = presets.blue[0.8]
 
-new = mix.mix([red, green, blue])
+new = mix([red, green, blue])
 
 print(new)
