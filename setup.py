@@ -27,5 +27,5 @@ setup(name="color_palette",
       install_requires=requirements,
       python_requires=">=3.6",
       url="https://github.com/SnowballSH/ColorPalette",
-      download_url="https://github.com/SnowballSH/ColorPalette/archive/v0.2.3.tar.gz"
+      download_url="https://github.com/SnowballSH/ColorPalette/archive/v0.2.4.tar.gz"
       )
