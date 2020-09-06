@@ -1,9 +1,9 @@
 from setuptools import setup
-import re
+# import re
 
-version = ''
 with open('color_palette/__init__.py') as f:
-    version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read(), re.MULTILINE).group(1)
+    # version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read(), re.MULTILINE).group(1)
+    version = '0.2.4'
 
 print(version)
 
