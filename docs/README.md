@@ -9,7 +9,7 @@ python -m pip install git+https://github.com/SnowballSH/color_palette.git@master
 ```
 Pip:
 ```bash
-pip install color-palette==0.2.4
+pip install color-palette==0.2.4.1
 ```
 
 ## Usage
