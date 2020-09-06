@@ -16,7 +16,7 @@ Install with git bash command:
 
 pip:
 
-``pip install color-palette==0.2``
+``pip install color-palette==0.2.4``
 
 Usage
 ------------
