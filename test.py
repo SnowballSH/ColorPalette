@@ -1,9 +1,9 @@
-from color_palette import mix, presets
+from color_palette import mixing, presets, picker
 
 red = presets.red[0.5]
 green = presets.green[-0.4]
 blue = presets.blue[0.8]
 
-new = mix([red, green, blue])
+new = mixing.mix([red, green, blue, picker.pick()])
 
 print(new)

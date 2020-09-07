@@ -1,4 +1,4 @@
-from . import conversion, errors, color_checks, mix
+from . import conversion, errors, color_checks, mixing
 
 ALLOWED_MODES = ("rgb", "hex")
 
@@ -90,7 +90,7 @@ class Color:
         if type(amount) not in (int, float):
             raise ValueError(f"'amount' parameter must be a number, got {type(amount)}")
 
-        return mix.brightness(self, amount=amount)
+        return mixing.brightness(self, amount=amount)
 
     def __repr__(self):
         return str(self.value)
