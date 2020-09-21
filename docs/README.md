@@ -1,4 +1,11 @@
 # Color Palette
+[![PyPI version](https://badge.fury.io/py/color-palette.svg)](https://pypi.python.org/pypi/color-palette/)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/color-palette.svg)](https://pypi.python.org/pypi/color-palette/) <!-- will work when setup.py gets pushed to pypi.org -->
+![MIT LICENSE](https://img.shields.io/github/license/SnowballSH/ColorPalette)
+![Stars](https://img.shields.io/github/stars/SnowballSH/ColorPalette)
+![Issues](https://img.shields.io/github/issues/SnowballSH/ColorPalette)
+![Forks](https://img.shields.io/github/forks/SnowballSH/ColorPalette)
+
 
 Python Package for easy coloring
 
