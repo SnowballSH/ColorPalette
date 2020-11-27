@@ -25,5 +25,5 @@ def brightness(target, amount):
     if type(amount) not in (int, float):
         raise ValueError(f"'amount' parameter must be a number, got {type(amount)}")
 
-    new = tuple((m + amount * 255) if m + amount * 255 <= 255 else 255 for m in target.value)
+    new = tuple(min(255, m + amount * 255) for m in target.value)
     return color.Color(new)
