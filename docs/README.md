@@ -1,3 +1,9 @@
+---
+
+## This project is no longer in active development. It is now read-only!
+
+---
+
 # Color Palette
 [![PyPI version](https://badge.fury.io/py/color-palette.svg)](https://pypi.python.org/pypi/color-palette/)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/color-palette.svg)](https://pypi.python.org/pypi/color-palette/) <!-- will work when setup.py gets pushed to pypi.org -->
